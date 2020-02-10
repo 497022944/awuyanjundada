@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import os,datetime,time
 from bfirst_step import models
 from bfirst_step.private_method.transmission_method import Run_case
+from bfirst_step.private_method.renewal_method.maoyanceshi_method import Run_case
 # Create your views here.
 
 # 上传数据详情
@@ -71,6 +72,40 @@ def batch(request):
         query_batch_list = query_batch_listname(request)
         fengye = fenyessd(request,idds)
         return render(request, 'batch_list.html', {'Query_doc': query_batch_list})
+
+#冒烟测试
+def batchmanyan(request):
+    try:
+        # 操作人
+        caozuoren = request.POST.get('jkcaozuoren', None)
+        # 线上代理人id
+        xianshangdlr = request.POST.get('jkxianshang', None)
+        # 线下代理人id
+        xianxiadir = request.POST.get('jkxianxia', None)
+        # 报价城市id
+        chengshi = request.POST.get('jkchengshi', None)
+        # 保险公司id
+        gongshi = request.POST.get('jkgongshi', None)
+        # 上传车牌
+        fafafa = request.POST.get('fafafa')
+
+        # 前端上传图片并且展示
+        fafa = request.FILES.get('chepai')
+        file_path = os.path.join('suplodfile', fafa.name)
+        fa = open(file_path, mode='wb')
+        for i in fafa.chunks():
+            fa.write(i)
+        fa.close()
+        # 找车牌文件
+        file_path = os.path.abspath(os.path.join(os.getcwd(), "./.")) + '\suplodfile\maoyanchepai.txt'
+        # 打开文件
+        file_open = open(file_path, 'r', encoding='utf-8-sig')
+        # 加载文件
+        licenseno_open = file_open.readlines()
+        Run_case.test_01maoyan(xianshangdlr, xianxiadir, chengshi, gongshi)
+    except Exception:
+        error = '参数不正确,请重新上传'
+        return render(request, 'batch_list.html', {'error': error}, {'Query_doc': query_batch_list})
 
 # 跳转数据详情列表
 def details(request, id):

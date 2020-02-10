@@ -618,7 +618,33 @@
 <div id="fade" class="black_overlay"></div>
 </h2>
 </form>
+<form action="/batchmanyan/" method="POST" enctype="multipart/form-data" id="forms" autocomplete="off">
+    <h2>
+    <div id="maoyance" style="color: #fcfffa" class="white_content">   冒烟测试
+        <a href="javascript:void(0)"
+           onclick="document.getElementById('maoyance').style.display='none';document.getElementById('maoyan').style.display='none'" style="float: right;color: crimson">
+            关闭
+        </a>
+        <input style="text-align:center;margin-left: auto; margin-right: auto;background: chartreuse;" type="button" onclick="shuomingmaoyan()" value="功能说明">功能说明
+        <input type="text" id="idjkcaozuoren" name="jkcaozuoren" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="操作人" required>
+        <input type="text" id="idjkxianshang" name="jkxianshang" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="线上代理人ID">
+        <input type="text" id="idjkxianxia" name="jkxianxia" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="线下代理人ID">
+        <input type="text" id="idjkchengshi" name="jkchengshi" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="报价城市ID" required>
+        <input type="text" id="idjkgongshi" name="jkgongshi" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="保险公司ID" required>
+        <a href="javascript:" class="a-upload">
+            <input type="file" name="chepai">上传车牌文件
+        </a>
+        <input type="button" onclick="tijiaoclick()" id='tijiao' style="text-align:center;margin-left: auto; margin-right: auto;color: chocolate;"  value="提交">
+    </div>
+<div id="maoyan" class="black_overlay"></div>
+</h2>
+</form>
 <h2>
+    <button class="button">
+        <a href="javascript:void(0)"
+           onclick="document.getElementById('maoyance').style.display='block';document.getElementById('maoyan').style.display='block'">冒烟测试
+        </a>
+    </button>
     <button class="button">
         <a href="javascript:void(0)"
            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">新增报价
@@ -700,6 +726,12 @@
             "（ 8 -双险种  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔））\n" +
             "\n" +
             "（ 9 -双险种  单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃、自燃损失、涉水、车损无发找第三方、指定修理厂）（无不计免赔）））")
+    }
+        function shuomingmaoyan() {
+             alert("\n" +
+            "注意：因逻辑为每个车牌请求case所有次数，故在传入caselei值时候需谨慎传值 会有封号风险，建议如：车牌20-case为2种\n" +
+            "\n" +
+            "（确认代码中的更改会按预期运行，且不会破坏整个版本的稳定性）\n"+ "输入有效代理人，有效城市，有效保险公司进行报价,默认给您选择单交强，单商业，双险种场景报价")
     }
 
 
