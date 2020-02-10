@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>在线化</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <style>
+        .index-nav {
+            width: 100%;
+            border-bottom: 1px solid #eeeeee;
+            height: 50px;
+            box-sizing: border-box;
+            background: white;
+        }
+
+        .index-nav-frame {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .index-nav-frame-line {
+            color: #333333;
+            background: white;
+            float: left;
+            position: relative;
+            display: block;
+            outline: none;
+            cursor: pointer;
+            width: 100px;
+            line-height: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .index-nav-frame-line.active {
+            color: #b63b4d;
+        }
+
+        .index-nav-frame-line-center {
+            opacity: 0;
+            height: 0;
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s; /* Firefox 4 */
+            -o-transition: all 0.5s; /* Opera */
+        }
+
+        .index-nav-frame-line-li {
+            width: 100%;
+            font-weight: 500;
+            text-align: center;
+            background: white;
+            color: #666666;
+        }
+
+        .index-nav-frame-line-li:hover {
+            background: #444359;
+            color: white;
+        }
+
+        .index-nav-frame-line-li:hover a {
+            background: #444359;
+            color: white;
+        }
+
+        .index-nav-frame-line-focus:focus {
+            display: none;
+        }
+
+        .index-nav-frame-line:hover .index-nav-frame-line-center {
+            height: auto;
+            opacity: 1;
+        }
+
+        .nav-line {
+            height: 50px;
+            width: 100%;
+            position: relative;
+            display: none;
+            outline: none;
+        }
+
+        .nav-small {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            display: none;
+            outline: none;
+        }
+
+        .nav-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-small-focus {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .nav-small-focus:focus {
+            display: none;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .index-nav-frame-line-li a {
+                display: block;
+                color: white;
+            }
+
+            .nav-line {
+                display: block;
+                border-bottom: 1px solid #eeeeee;
+            }
+
+            .nav-small {
+                display: block;
+            }
+
+            .nav-small:focus ~ .index-nav-frame-line {
+                height: auto;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .nav-small:focus .nav-small-focus {
+                display: block;
+            }
+
+            .index-nav-frame {
+                width: 100%;
+            }
+
+            .index-nav-frame-line {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+            }
+
+            .index-nav-frame-line-center {
+                position: relative;
+                background: #444359;
+            }
+
+            .index-nav-frame-line:hover .index-nav-frame-line-center {
+                height: 0;
+                opacity: 0;
+            }
+
+            .index-nav-frame-line-li {
+                border-bottom: 1px solid #4b4a5e;
+                color: #d9d9d9;
+                background: #444359;
+            }
+
+            .index-nav-frame-line-li:hover {
+                background: #b63b4d;
+            }
+
+            .index-nav-frame-line:focus {
+                height: auto;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .index-nav-frame-line:focus > .index-nav-frame-line-center {
+                height: auto;
+                opacity: 1;
+            }
+
+            .index-nav-frame-line:focus .index-nav-frame-line-header {
+                color: #B63B4D;
+            }
+
+            .index-nav-frame-line-focus {
+                display: none;
+                width: 100%;
+                height: 50px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .index-nav-frame-line:focus .index-nav-frame-line-focus {
+                display: block;
+            }
+
+        }
+
+        /* CSS Document */
+        /*Reset*/
+        * {
+            box-sizing: content-box;
+        }
+
+        a:hover, a:focus {
+            text-decoration: none;
+        }
+
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        body {
+            -webkit-text-size-adjust: none;
+        }
+
+        fieldset, img {
+            border: 0;
+        }
+
+        img {
+            vertical-align: top;
+            max-width: 100%;
+        }
+
+        address, caption, cite, code, dfn, em, th, var {
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        caption, th {
+            text-align: left;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 100%;
+            font-weight: normal;
+        }
+
+        q:before, q:after {
+            content: '';
+        }
+
+        abbr, acronym {
+            border: 0;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        * html .clearfix {
+            zoom: 1;
+        }
+
+        /* IE6 */
+        *:first-child + html .clearfix {
+            zoom: 1;
+        }
+
+        /* IE7 */
+        .cli {
+            clear: both;
+            font-size: 0;
+            height: 0;
+            overflow: hidden;
+            display: block;
+        }
+
+        .lclear {
+            clear: left;
+            font-size: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: '微软雅黑', "宋体", "Arial Narrow", Helvetica, sans-serif;
+            color: #eeeeee;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table td, table th {
+            border: 1px solid #cad9ea;
+            color: #666;
+            height: 30px;
+        }
+
+        table thead th {
+            background-color: #E6E4E4;
+            width: 100px;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background: #F5FAFA;
+        }
+         h2 {
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            padding: 7px 0;
+        }
+                .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 6px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+.black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 25%;
+            width: 55%;
+            height: 65%;
+            border: #eae5dd;;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+        input {
+
+            font-size: 12px;
+            /* 设置输入框中字体的大小 */
+
+            height: 30px;
+            /* 设置输入框的高度 */
+
+            border-radius: 15px;
+            /* 设置输入框的圆角的大小 */
+
+            border: 1px solid #c8cccf;
+            /* 设置输入框边框的粗细和颜色 */
+
+            color: #986655;
+            /* 设置输入框中文字的颜色 */
+
+            outline: 0;
+            /* 将输入框点击的时候出现的边框去掉 */
+
+            text-align: left;
+            /* 设置输入框中文字的位置 */
+
+            padding-left: 10px;
+
+            display: block;
+            /* 将输入框设置为块级元素 */
+
+            cursor: pointer;
+
+            box-shadow: 2px 2px 5px 1px #ccc;
+            padding-right: 11px;
+
+        }
+
+        input::-webkit-input-placeholder {
+            color: #986655;
+            font-size: 12px;
+        }
+                .a-upload {
+            padding: 4px 10px;
+            line-height: 20px;
+            position: relative;
+            cursor: pointer;
+            color: #888;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+
+        .a-upload input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer
+        }
+        .a-upload:hover {
+            color: #444;
+            background: #eee;
+            border-color: #ccc;
+            text-decoration: none
+        }
+                .trvalue {
+            text-align: center;
+            float: left;
+        }
+
+    </style>
+</head>
+<body style="background: #eeeeee">
+
+<div class="index-nav">
+    <div class="index-nav-frame clearfix">
+        <div class="nav-line">
+
+        </div>
+        <div class="nav-small" tabindex="-1">
+            <div class="nav-small-focus" tabindex="-1">
+
+            </div>
+            <img src="img/icon.png">
+        </div>
+        <div class="index-nav-frame-line active" tabindex="-1">
+            首页
+            <div class="index-nav-frame-line-center">
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+            </div>
+            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+        </div>
+        <div class="index-nav-frame-line" tabindex="-1">
+            web自动化
+            <div class="index-nav-frame-line-center">
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+            </div>
+            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+        </div>
+        <div class="index-nav-frame-line" tabindex="-1">
+            api自动化
+            <div class="index-nav-frame-line-center">
+                <div class="index-nav-frame-line-li">
+                    <a href="/batch">保险组测试</a>
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+            </div>
+            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+        </div>
+        <div class="index-nav-frame-line" tabindex="-1">
+            统计模块
+            <div class="index-nav-frame-line-center">
+
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+            </div>
+            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+        </div>
+        <div class="index-nav-frame-line" tabindex="-1">
+            系统模块
+            <div class="index-nav-frame-line-center">
+
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+                <div class="index-nav-frame-line-li">
+                    敬请期待
+                </div>
+            </div>
+            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+        </div>
+        <div style="float: right" class="index-nav-frame-line active" tabindex="-1">
+            <a class="index-nav-frame-line active" tabindex="-1" href="/login">回到主页</a>
+            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+        </div>
+    </div>
+</div>
+<table width="90%" class="table">
+    <caption>
+<form action="/batch/" method="POST" enctype="multipart/form-data" id="forms" autocomplete="off">
+    <h2>
+    <div id="light" style="color: #fcfffa" class="white_content">   新增接口参数报价
+        <a href="javascript:void(0)"
+           onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" style="float: right;color: crimson">
+            关闭
+        </a>
+        <input style="text-align:center;margin-left: auto; margin-right: auto;background: chartreuse;" type="button" onclick="shuoming()" value="功能说明">功能说明
+        <input type="text" id="idjkcaozuoren" name="jkcaozuoren" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="操作人" required>
+        <input  style="text-align:center;margin-left: auto; margin-right: auto;" list="students" id="idjkxianshangxianxia" placeholder="线上&线下" type="text" name="jkxianshangxianxia" required>
+        <datalist id="students">
+            <option value="1">线上
+            <option value="2">线下
+            <option value="3">对比
+        </datalist>
+        <input type="text" id="idjkxianshang" name="jkxianshang" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="线上代理人ID">
+        <input type="text" id="idjkxianxia" name="jkxianxia" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="线下代理人ID">
+        <input type="text" id="idjkchengshi" name="jkchengshi" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="报价城市ID" required>
+        <input type="text" id="idjkgongshi" name="jkgongshi" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="保险公司ID" required>
+        <input type="text" id="idjkcase" name="jkcase" style="text-align:center;margin-left: auto; margin-right: auto;" placeholder="场景ID" required>
+        <a href="javascript:" class="a-upload">
+            <input type="file" name="chepai">上传车牌文件
+        </a>
+        <input type="button" onclick="tijiaoclick()" id='tijiao' style="text-align:center;margin-left: auto; margin-right: auto;color: chocolate;"  value="提交">
+    </div>
+<div id="fade" class="black_overlay"></div>
+</h2>
+</form>
+<h2>
+    <button class="button">
+        <a href="javascript:void(0)"
+           onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">新增报价
+        </a>
+    </button>
+    <span style="background:red">{{ testcase }}</span>
+    <span style="background:red">{{ error }}</span>
+</h2>
+    </caption>
+    <thead>
+    <tr>
+        <th>执行批次ID</th>
+        <th>车牌数量</th>
+        <th>执行状态</th>
+        <th>保司</th>
+        <th>场景ID</th>
+        <th>线上代理人ID</th>
+        <th>线下代理人ID</th>
+        <th>创建人</th>
+        <th>创建时间</th>
+        <th>查看详情</th>
+        <th>过程操作</th>
+        <th>删除</th>
+    </tr>
+    </thead>
+     {% for v1 in page %}
+        <tr>
+                <td>{{ v1.id}}</td>
+                <td>{{ v1.licenseNumber}}</td>
+                <td>{{ v1.executionstate}}</td>
+                <td>{{ v1.Insurance}}</td>
+                <td>{{ v1.sceneid}}</td>
+                <td>{{ v1.sagent}}</td>
+                <td>{{ v1.xagent}}</td>
+                <td>{{ v1.founder}}</td>
+                <td>{{ v1.creationtime}}</td>
+            <td>
+                <a style="color: #4CAF50" href="/{{ v1.id }}/details/">详情</a>
+            </td>
+            <td>
+                <a style="color: cadetblue" href="https://www.baidu.com">重试</a>
+            </td>
+            <td>
+                <a style="color: red" href="/{{ v1.id }}/delete/">删除</a>
+            </td>
+            <p>{{ artucle.desctiption|safe }}</p>
+            <span>{{ artucle.time }}</span>
+        </tr>
+     {% endfor %}
+</table>
+
+<div>页码：{{ page.number }}/{{ paginator.num_pages }}总数：{{ pagunators }}
+    <a href="/fenyessd/1">首页</a>
+    {% for i in paginator.page_range %}
+    <a href="/fenyessd/{{ i }}/">{{ i }}</a>
+    {% endfor %}
+    <a href="/fenyessd/{{ paginator.num_pages }}">尾页</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+        function shuoming() {
+        alert("\n" +
+            "注意：因逻辑为每个车牌请求case所有次数，故在传入caselei值时候需谨慎传值 会有封号风险，建议如：车牌20-case为2种\n" +
+            "\n" +
+            "（1 -单交强）\n" +
+            "\n" +
+            "（2 -单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+不计免赔））\n" +
+            "\n" +
+            "（ 3 -单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）（无不计免赔）））\n" +
+            "\n" +
+            "（ 4 -单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔））\n" +
+            "\n" +
+            "（ 5 -单商业  单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃、自燃损失、涉水、车损无发找第三方、指定修理厂）（无不计免赔）））\n" +
+            "\n" +
+            "（ 6 -双险种  （基本险（车损、三者、司机座位、乘客座位、盗抢）+不计免赔））\n" +
+            "\n" +
+            "（ 7 -双险种  （基本险（车损、三者、司机座位、乘客座位、盗抢）（无不计免赔）））\n" +
+            "\n" +
+            "（ 8 -双险种  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔））\n" +
+            "\n" +
+            "（ 9 -双险种  单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃、自燃损失、涉水、车损无发找第三方、指定修理厂）（无不计免赔）））")
+    }
+
+
+        function tijiaoclick() {
+            if ($("#idjkxianshangxianxia").val() === '') {
+                alert("请正确输入关键字");
+                return false;
+            }
+            if ($("#idjkxianshangxianxia").val() === '1') {
+                if ($("#idjkxianshang").val() === ''){
+                    alert("请输入线上代理人ID");
+                    return false;
+                }
+            }
+            if ($("#idjkxianshangxianxia").val() === '2') {
+                if ($("#idjkxianxia").val() === ''){
+                    alert("请输入线下代理人ID");
+                    return false;
+                }
+            }
+            if ($("#idjkxianshangxianxia").val() === '3') {
+                if ($("#idjkxianxia").val() === '' || $("#idjkxianshang").val() === ''){
+                    alert("请输入线下与线上代理人ID");
+                    return false;
+                }
+            }
+            if ($("#idjkcaozuoren").val() === '') {
+                alert("请输入操作人");
+                return false;
+            }
+            if ($("#idjkchengshi").val() === '') {
+                alert("请输入报价城市ID");
+                return false;
+            }
+            if ($("#idjkgongshi").val() === '') {
+                alert("请输入保险公司ID");
+                return false;
+            }
+            if ($("#idjkcase").val() === '') {
+                alert("请输入场景ID");
+                return false;
+            }
+            $("#forms").submit()
+
+        }
+
+
+</script>
+</body>
+</html>

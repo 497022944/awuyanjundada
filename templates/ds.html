@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.1.0/css/bootstrap.css">
+</head>
+<body>
+<nav aria-label="Page navigation">
+    {% if cus_list.has_previous %}
+        <li>
+            <a href="?page={{ cus_list.previous_page_number }}" aria-label="Previous"></a>
+            <span aria-hidden="true"></span>
+        </li>
+    {% endif %}
+    {% for pg in cus_list.paginator.page_range %}
+        {% if cus_list.number == pg %}
+            <li class="active">
+            <a href="?page{{ pg }}">{{ pg }}</a>
+            </li>
+        {% else %}
+        <li>
+            <a href="?page{{ pg }}">{{ pg }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    {% if cus_list.has_next %}
+        <li>
+            <a href="?page={{ cus_list.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">
+            &raquo;
+        </span>
+            </a>
+        </li>
+    {% endif %}
+</nav>
+
+<table width="90%" class="table">
+    <thead>
+    <tr>
+        <th>执行批次ID</th>
+        <th>车牌数量</th>
+        <th>执行状态</th>
+        <th>保司</th>
+        <th>场景ID</th>
+        <th>线上代理人ID</th>
+        <th>线下代理人ID</th>
+        <th>创建人</th>
+        <th>创建时间</th>
+        <th>查看详情</th>
+        <th>过程操作</th>
+        <th>删除</th>
+    </tr>
+    </thead>
+     {% for v1 in page %}
+        <tr>
+                <td>{{ v1.id}}</td>
+                <td>{{ v1.licenseNumber}}</td>
+                <td>{{ v1.executionstate}}</td>
+                <td>{{ v1.Insurance}}</td>
+                <td>{{ v1.sceneid}}</td>
+                <td>{{ v1.sagent}}</td>
+                <td>{{ v1.xagent}}</td>
+                <td>{{ v1.founder}}</td>
+                <td>{{ v1.creationtime}}</td>
+            <td>
+                <a style="color: #4CAF50" href="/{{ v1.id }}/details/">详情</a>
+            </td>
+            <td>
+                <a style="color: cadetblue" href="https://www.baidu.com">重试</a>
+            </td>
+            <td>
+                <a style="color: red" href="/{{ v1.id }}/delete/">删除</a>
+            </td>
+            <p>{{ artucle.desctiption|safe }}</p>
+            <span>{{ artucle.time }}</span>
+        </tr>
+            {% endfor %}
+</table>
+<div>页码：{{ page.number }}/{{ paginator.num_pages }}总数：{{ pagunators }}
+    <a href="/fenyessd/?page=1">首页</a>
+    {% for i in paginator.page_range %}
+    <a href="/fenyessd/{{ i }}/">{{ i }}</a>
+    {% endfor %}
+    <a href="/fenyessd/?page={{ paginator.num_pages }}">尾页</a>
+</div>
+
+</body>
+</html>

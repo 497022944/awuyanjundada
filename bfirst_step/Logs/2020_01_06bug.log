@@ -1,0 +1,264 @@
+[2020-01-06 14:50:49,221] - LogBug.py - 40 - root - DEBUG - 日志记录--险种对比失败---粤SV3N83--单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔）--{
+  "BuJiMianCheSun": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianChengKe": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianDaoQiang": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianHuaHen": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSanZhe": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSheShui": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSiJi": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianZiRan": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "CheSun": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "ChengKe": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "DaoQiang": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "HcSanFangTeYue": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "HcXiuLiChang": {
+    "BaoE": 0.3,
+    "BaoFei": 0
+  },
+  "HuaHen": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "SanZhe": {
+    "BaoE": 500000,
+    "BaoFei": 0
+  },
+  "SheShui": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "SiJi": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "ZiRan": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "交强": 0,
+  "交强起保时间": "",
+  "保险公司": "1",
+  "商业": 0,
+  "商业起保时间": "",
+  "报价城市": "20",
+  "报价状态": "报价失败",
+  "报价耗时": 1,
+  "报价请求": "请求发送成功",
+  "续保结果": "续保成功",
+  "获取结果": "客户端无法连接",
+  "请求用例": "单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔）",
+  "请求用例id": "4",
+  "车船": 0
+}
+[2020-01-06 14:51:44,174] - LogBug.py - 40 - root - DEBUG - 日志记录--险种对比失败---粤SV0K03--单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔）--{
+  "BuJiMianCheSun": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianChengKe": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianDaoQiang": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianHuaHen": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSanZhe": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSheShui": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSiJi": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianZiRan": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "CheSun": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "ChengKe": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "DaoQiang": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "HcSanFangTeYue": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "HcXiuLiChang": {
+    "BaoE": 0.3,
+    "BaoFei": 0
+  },
+  "HuaHen": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "SanZhe": {
+    "BaoE": 500000,
+    "BaoFei": 0
+  },
+  "SheShui": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "SiJi": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "ZiRan": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "交强": 0,
+  "交强起保时间": "",
+  "保险公司": "1",
+  "商业": 0,
+  "商业起保时间": "",
+  "报价城市": "20",
+  "报价状态": "报价失败",
+  "报价耗时": 0,
+  "报价请求": "请求发送成功",
+  "续保结果": "续保成功",
+  "获取结果": "客户端无法连接",
+  "请求用例": "单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔）",
+  "请求用例id": "4",
+  "车船": 0
+}
+[2020-01-06 14:52:28,986] - LogBug.py - 40 - root - DEBUG - 日志记录--险种对比失败---粤B8C819--单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔）--{
+  "BuJiMianCheSun": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianChengKe": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianDaoQiang": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianHuaHen": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSanZhe": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSheShui": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianSiJi": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "BuJiMianZiRan": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "CheSun": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "ChengKe": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "DaoQiang": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "HcSanFangTeYue": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "HcXiuLiChang": {
+    "BaoE": 0.3,
+    "BaoFei": 0
+  },
+  "HuaHen": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "SanZhe": {
+    "BaoE": 500000,
+    "BaoFei": 0
+  },
+  "SheShui": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "SiJi": {
+    "BaoE": 2000,
+    "BaoFei": 0
+  },
+  "ZiRan": {
+    "BaoE": 1,
+    "BaoFei": 0
+  },
+  "交强": 0,
+  "交强起保时间": "",
+  "保险公司": "1",
+  "商业": 0,
+  "商业起保时间": "",
+  "报价城市": "20",
+  "报价状态": "报价失败",
+  "报价耗时": 0,
+  "报价请求": "请求发送成功",
+  "续保结果": "续保成功",
+  "获取结果": "客户端无法连接",
+  "请求用例": "单商业  （基本险（车损、三者、司机座位、乘客座位、盗抢）+附加险（划痕、玻璃(国产)、自燃损失、涉水、车损无发找第三方、指定修理厂(国产)）+不计免赔）",
+  "请求用例id": "4",
+  "车船": 0
+}
