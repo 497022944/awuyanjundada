@@ -225,3 +225,7 @@ def fenyessd(request, id):
     pagunators = paginator.count
     page = paginator.page(int(page_nubmer))
     return render(request,'batch_list.html',locals())
+#冒烟
+def query_batch_maoyan(request):
+    query_doc = []
+    result = models.UserIifo.objects.all().order_by('id')
